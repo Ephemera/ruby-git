@@ -276,11 +276,13 @@ module Git
 
     # compares the index and the working directory
     def diff_files
+      run_command('git update-index --refresh 2>&1')
       diff_as_hash('diff-files')
     end
     
     # compares the index and the repository
     def diff_index(treeish)
+      run_command('git update-index --refresh 2>&1')
       diff_as_hash('diff-index', treeish)
     end
             
